@@ -1,0 +1,22 @@
+# 1) Extract the downloaded ZIP and enter the project folder.
+cd ~/Downloads
+unzip -o dynamic-agentic-rag-v0.1.0.zip
+cd dynamic-agentic-rag-v0.1.0
+
+# 2) Run the tests and a small smoke experiment first.
+python3 -m unittest discover -s tests -v
+python3 -m dynamic_rag.cli run --episodes 20 --seeds 17 29 --out results_smoke
+
+# 3) Run the reproducible baseline experiment.
+python3 -m dynamic_rag.cli run --episodes 2000 --seeds 17 29 43 71 101 --out results
+
+# 4) Initialise Git and push into your existing EMPTY GitHub repository.
+# Do not clone the empty repository; initialise this project folder directly.
+git init -b main
+git remote add origin https://github.com/MHKhan50/dynamic-agentic-rag.git
+git add README.md LICENSE .gitignore dynamic_rag docs tests terminal_commands_mac.txt
+git commit -m "Add DAR-RB v0.1.0 synthetic reliability benchmark"
+git push -u origin main
+
+# If Git says origin already exists, use this instead of adding it again:
+# git remote set-url origin https://github.com/MHKhan50/dynamic-agentic-rag.git
