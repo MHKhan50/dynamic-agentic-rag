@@ -1,0 +1,57 @@
+{
+  "benchmark": "DAR-RB",
+  "episodes_per_seed": 2000,
+  "policies": [
+    "static_retrieval",
+    "refresh_every_step",
+    "confidence_refresh",
+    "evidence_gated_recovery"
+  ],
+  "results": {
+    "confidence_refresh": {
+      "episode_success_rate": 0.4974,
+      "episodes": 10000,
+      "propagated_errors_per_episode": 0.2201,
+      "recoveries_per_episode": 1.5268,
+      "retrievals_per_episode": 3.6293,
+      "unnecessary_refreshes_per_episode": 2.0638,
+      "wrong_steps_per_100": 11.31625
+    },
+    "evidence_gated_recovery": {
+      "episode_success_rate": 0.5735,
+      "episodes": 10000,
+      "propagated_errors_per_episode": 0.0988,
+      "recoveries_per_episode": 1.7258,
+      "retrievals_per_episode": 2.3442,
+      "unnecessary_refreshes_per_episode": 0.5484,
+      "wrong_steps_per_100": 7.9675
+    },
+    "refresh_every_step": {
+      "episode_success_rate": 0.8279,
+      "episodes": 10000,
+      "propagated_errors_per_episode": 0.0119,
+      "recoveries_per_episode": 1.893,
+      "retrievals_per_episode": 8.0,
+      "unnecessary_refreshes_per_episode": 5.9403,
+      "wrong_steps_per_100": 2.54
+    },
+    "static_retrieval": {
+      "episode_success_rate": 0.1723,
+      "episodes": 10000,
+      "propagated_errors_per_episode": 1.1278,
+      "recoveries_per_episode": 0.0,
+      "retrievals_per_episode": 0.0,
+      "unnecessary_refreshes_per_episode": 0.0,
+      "wrong_steps_per_100": 34.29
+    }
+  },
+  "seeds": [
+    17,
+    29,
+    43,
+    71,
+    101
+  ],
+  "version": "0.2.0",
+  "warning": "Synthetic simulator outputs only; not real-world performance claims."
+}

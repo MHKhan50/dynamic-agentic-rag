@@ -1,7 +1,6 @@
 import csv
 import json
 import os
-import random
 from collections import defaultdict
 from .simulator import POLICIES, make_episodes, run_episode
 
@@ -13,9 +12,8 @@ def run_experiment(episodes_per_seed, seeds, out_dir):
         episodes = make_episodes(episodes_per_seed, seed)
         for ep in episodes:
             for policy in POLICIES:
-                # Independent but reproducible random stream for each episode-policy pair.
-                policy_seed = (seed * 1_000_003 + int(ep.episode_id[-5:]) * 97 + POLICIES.index(policy) * 7919) & 0xFFFFFFFF
-                row, traces = run_episode(ep, policy, random.Random(policy_seed))
+                # every policy sees the same world draws, so episodes are paired
+                row, traces = run_episode(ep, policy)
                 episode_rows.append(row)
                 trace_rows.extend(traces)
     write_csv(os.path.join(out_dir, "episode_metrics.csv"), episode_rows)
@@ -35,7 +33,7 @@ def run_experiment(episodes_per_seed, seeds, out_dir):
             "recoveries_per_episode": round(sum(r["recoveries"] for r in rows) / n, 6),
             "unnecessary_refreshes_per_episode": round(sum(r["unnecessary_refreshes"] for r in rows) / n, 6),
         }
-    payload = {"benchmark": "DAR-RB", "version": "0.1.0", "episodes_per_seed": episodes_per_seed,
+    payload = {"benchmark": "DAR-RB", "version": "0.2.0", "episodes_per_seed": episodes_per_seed,
                "seeds": list(seeds), "policies": list(POLICIES),
                "warning": "Synthetic simulator outputs only; not real-world performance claims.",
                "results": summary}

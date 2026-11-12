@@ -19,7 +19,7 @@ The benchmark generates two CSV files. No real user data, documents or agent log
 - `step`: 1-based workflow step.
 - `stale_evidence`: whether stale evidence remained after any refresh.
 - `contradiction`: whether contradiction remained after any refresh.
-- `confidence`: synthetic confidence proxy before refresh.
+- `confidence`: noisy confidence score before refresh (bad evidence 0.40 to 0.90, good evidence 0.60 to 1.00).
 - `refresh_triggered`: whether policy initiated refresh.
 - `step_error`: whether current step ended in error.
 - `error_propagated`: indicator emitted by current simulator implementation when a propagation event has occurred and the current step is erroneous; interpret with the source code and do not treat it as a causal ground-truth annotation.

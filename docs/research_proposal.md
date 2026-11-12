@@ -24,7 +24,7 @@ At each critical decision boundary, maintain an evidence record with source iden
 1. Static retrieval: retrieve once and reuse.
 2. Refresh every step: unconditional retrieval.
 3. Confidence refresh: refresh only below a confidence threshold.
-4. Evidence-gated recovery: refresh on stale evidence, contradiction, or detected upstream error.
+4. Evidence-gated recovery: refresh when a freshness check, a cross-source check or a consistency check fires. In v0.2 these checks are imperfect (recall 0.8, 0.7 and 0.6) and no policy sees the hidden stale or contradiction state.
 
 ## Evaluation
 Primary: episode success rate, wrong intermediate steps per 100 steps, propagated errors per episode.  
