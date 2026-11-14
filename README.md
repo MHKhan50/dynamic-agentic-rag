@@ -1,5 +1,7 @@
 # Dynamic Agentic RAG Reliability Benchmark (DAR-RB)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24167525.svg)](https://doi.org/10.5281/zenodo.24167525)
+
 An agent that retrieves, reasons and passes its result to the next step can carry one stale or contradicted fact all the way to the end. This simulator asks a narrow question: if you can only afford to re-retrieve sometimes, when should you do it?
 
 Everything is synthetic. Each episode is an 8-step workflow where retrieved evidence can be stale or contradicted, and an error at one step can carry into the next. No LLM, vector store or web search is called.
